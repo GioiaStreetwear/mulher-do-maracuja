@@ -1,67 +1,100 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gioia Mundo — Street Art Origins</title>
-  <meta name="description" content="Discover the birthplace of your Gioia Mundo street art piece."/>
-  <meta name="color-scheme" content="dark"/>
+  <meta name="description" content="Discover the birthplace of your Gioia Mundo street art piece." />
+  <meta name="color-scheme" content="dark" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap" rel="stylesheet" />
 
   <style>
     :root{
-      --bg:#0b0c10;
-      --text:#f5f7ff;
-      --muted:#b8bfd8;
-      --line:#232843;
-      --card: rgba(18,20,32,.75);
-      --glass: rgba(0,0,0,.40);
-      --accent:#0095f6;
+      --bg:#090a0f;
+      --bg2:#11131d;
+      --text:#f6f7fb;
+      --muted:#aeb6cf;
+      --line:#252b42;
+      --card:rgba(17,20,31,.78);
+      --glass:rgba(0,0,0,.34);
+      --shadow:0 24px 80px rgba(0,0,0,.38);
+      --glow:0 12px 40px rgba(124,92,255,.22);
+      --radius-xl:28px;
+      --radius-lg:22px;
+      --radius-md:16px;
+      --radius-pill:999px;
     }
 
     *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
 
     body{
       margin:0;
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
       color:var(--text);
       background:
-        radial-gradient(900px 500px at 20% 10%, rgba(124,92,255,.22), transparent 60%),
-        radial-gradient(700px 500px at 90% 20%, rgba(46,229,157,.14), transparent 55%),
-        linear-gradient(180deg,#070810,var(--bg));
+        radial-gradient(900px 520px at 15% 8%, rgba(124,92,255,.18), transparent 60%),
+        radial-gradient(700px 500px at 92% 18%, rgba(46,229,157,.10), transparent 58%),
+        linear-gradient(180deg,#07080d 0%, var(--bg) 100%);
+      min-height:100vh;
     }
 
-    .wrap{max-width:1200px;margin:0 auto;padding:24px}
+    img, iframe{
+      display:block;
+      max-width:100%;
+    }
+
+    a{color:inherit}
+
+    .wrap{
+      max-width:1280px;
+      margin:0 auto;
+      padding:28px;
+    }
 
     .layout{
       display:grid;
-      gap:20px;
-      grid-template-columns:640px 1fr;
+      grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr);
+      gap:22px;
       align-items:start;
     }
 
-    @media (max-width:960px){
-      .layout{grid-template-columns:1fr}
+    @media (max-width:980px){
+      .layout{
+        grid-template-columns:1fr;
+      }
     }
 
     .card{
       background:var(--card);
       border:1px solid var(--line);
-      border-radius:26px;
+      border-radius:var(--radius-xl);
       overflow:hidden;
-      backdrop-filter:blur(8px);
+      backdrop-filter:blur(10px);
+      box-shadow:var(--shadow);
     }
 
-    .mapCard{padding:14px}
+    .mapCard{
+      padding:14px;
+    }
 
     .map{
       position:relative;
-      height:520px;
-      border-radius:18px;
+      height:580px;
+      border-radius:var(--radius-lg);
       overflow:hidden;
+      background:#111;
+      border:1px solid rgba(255,255,255,.05);
+    }
+
+    @media (max-width:680px){
+      .map{
+        height:430px;
+      }
     }
 
     .map iframe{
@@ -74,57 +107,74 @@
 
     .mapOverlay{
       position:absolute;
+      top:14px;
       left:14px;
       right:14px;
-      top:14px;
+      z-index:2;
       display:flex;
       justify-content:space-between;
       align-items:center;
       gap:10px;
       pointer-events:none;
-      z-index:2;
     }
 
-    .badge{
+    @media (max-width:680px){
+      .mapOverlay{
+        flex-direction:column;
+        align-items:stretch;
+      }
+    }
+
+    .badge,
+    .btn{
       pointer-events:auto;
-      padding:10px 14px;
-      border-radius:999px;
-      background:var(--glass);
-      border:1px solid rgba(255,255,255,.14);
+      border-radius:var(--radius-pill);
       backdrop-filter:blur(10px);
       font-weight:800;
       font-size:13px;
-      max-width:75%;
+      line-height:1.2;
+    }
+
+    .badge{
+      padding:10px 14px;
+      background:var(--glass);
+      border:1px solid rgba(255,255,255,.13);
+      color:var(--text);
+      max-width:78%;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
     }
 
-    .btn{
-      pointer-events:auto;
-      padding:10px 14px;
-      border-radius:999px;
-      background:rgba(0,0,0,.35);
-      border:1px solid rgba(255,255,255,.16);
-      backdrop-filter:blur(10px);
-      color:var(--text);
-      font-weight:800;
-      font-size:13px;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      transition:transform .2s ease;
+    @media (max-width:680px){
+      .badge{max-width:100%}
     }
 
-    .btn:hover{transform:translateY(-1px)}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 14px;
+      text-decoration:none;
+      color:var(--text);
+      background:rgba(0,0,0,.36);
+      border:1px solid rgba(255,255,255,.16);
+      transition:transform .2s ease, border-color .2s ease, background .2s ease;
+    }
 
-    .ctaWrap{
+    .btn:hover,
+    .btn:focus-visible{
+      transform:translateY(-1px);
+      border-color:rgba(255,255,255,.30);
+      background:rgba(0,0,0,.48);
+      outline:none;
+    }
+
+    .bottomBar{
       margin-top:14px;
       display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      justify-content:space-between;
+      justify-content:center;
     }
 
     .cta{
@@ -132,145 +182,248 @@
       align-items:center;
       gap:10px;
       padding:14px 18px;
-      border-radius:999px;
-      background:linear-gradient(135deg,#ffffff,#eaeaff);
-      color:#000;
+      border-radius:var(--radius-pill);
+      text-decoration:none;
+      background:linear-gradient(135deg,#ffffff 0%, #ececff 100%);
+      color:#090909;
       font-weight:800;
       font-size:14px;
-      text-decoration:none;
-      box-shadow:0 12px 40px rgba(124,92,255,.25);
-      transition:transform .2s ease;
+      box-shadow:var(--glow);
+      transition:transform .2s ease, box-shadow .2s ease;
     }
 
-    .cta:hover{transform:translateY(-1px)}
-
-    .note{
-      font-size:13px;
-      color:var(--muted);
-      margin:0;
-      max-width:420px;
-      line-height:1.6;
+    .cta:hover,
+    .cta:focus-visible{
+      transform:translateY(-1px);
+      box-shadow:0 18px 48px rgba(124,92,255,.28);
+      outline:none;
     }
 
     .side{
-      padding:22px;
+      padding:26px;
       display:grid;
-      gap:16px;
+      gap:18px;
+      align-content:start;
+    }
+
+    .eyebrow{
+      width:fit-content;
+      padding:7px 12px;
+      border-radius:var(--radius-pill);
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
     }
 
     .logo{
       font-family:'Montserrat',sans-serif;
       font-weight:300;
-      letter-spacing:.75em;
+      letter-spacing:.70em;
       text-transform:uppercase;
-      font-size:18px;
-    }
-
-    .text{
-      color:var(--muted);
-      line-height:1.75;
+      font-size:19px;
+      line-height:1.4;
       margin:0;
     }
 
-    .coords{
+    .text{
+      margin:0;
+      color:var(--muted);
+      line-height:1.85;
+      font-size:15px;
+      max-width:560px;
+    }
+
+    .metaRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .chip{
       width:fit-content;
       padding:8px 12px;
-      border-radius:999px;
+      border-radius:var(--radius-pill);
       border:1px solid var(--line);
-      font-size:13px;
       color:var(--muted);
+      font-size:13px;
+      background:rgba(255,255,255,.02);
     }
 
     .divider{
       height:1px;
-      background:var(--line);
+      background:linear-gradient(90deg, rgba(255,255,255,.10), rgba(255,255,255,.02));
+      margin:4px 0 2px;
     }
 
-    .insta{
-      max-width:420px;
+    .artWrap{
+      display:grid;
+      gap:12px;
     }
 
-    .insta img{
-      display:block;
+    .artFrame{
+      position:relative;
+      overflow:hidden;
+      border-radius:20px;
+      background:#0e1018;
+      border:1px solid rgba(255,255,255,.06);
+      box-shadow:0 20px 60px rgba(0,0,0,.35);
+      isolation:isolate;
+    }
+
+    .artFrame::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), transparent 22%, transparent 75%, rgba(255,255,255,.03));
+      pointer-events:none;
+      z-index:1;
+    }
+
+    .artFrame img{
       width:100%;
       height:auto;
-      border-radius:14px;
-      box-shadow:0 20px 60px rgba(0,0,0,.35);
-      transition:transform .3s ease;
+      aspect-ratio:4 / 5;
+      object-fit:cover;
+      transition:transform .45s ease;
+      transform-origin:center;
     }
 
-    .insta img:hover{
-      transform:scale(1.02);
+    .artFrame:hover img{
+      transform:scale(1.035);
     }
 
-    .insta-fallback{
-      margin-top:10px;
-      font-size:13px;
+    .artInfo{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      align-items:flex-start;
+      flex-wrap:wrap;
+    }
+
+    .artTitle{
+      margin:0;
+      font-size:16px;
+      font-weight:700;
+      letter-spacing:.02em;
+    }
+
+    .artCaption{
+      margin:4px 0 0;
       color:var(--muted);
+      font-size:13px;
+      line-height:1.65;
+      max-width:500px;
+    }
+
+    .smallTag{
+      width:fit-content;
+      padding:8px 12px;
+      border-radius:var(--radius-pill);
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      color:var(--text);
+      font-size:12px;
+      white-space:nowrap;
+    }
+
+    @media (max-width:980px){
+      .side{
+        padding:22px;
+      }
+
+      .artFrame img{
+        aspect-ratio:auto;
+      }
     }
   </style>
 </head>
-
 <body>
-<main class="wrap">
-  <div class="layout">
+  <main class="wrap">
+    <div class="layout">
 
-    <section class="card mapCard">
-      <div class="map">
-        <div class="mapOverlay">
-          <div class="badge">📍 Rio de Janeiro, Brazil</div>
+      <section class="card mapCard">
+        <div class="map">
+          <div class="mapOverlay">
+            <div class="badge">📍 Rio de Janeiro, Brazil</div>
 
-          <a class="btn"
-             href="https://www.google.com/maps/search/?api=1&query=-22.986246,-43.2485183"
-             target="_blank" rel="noopener noreferrer">
-            🗺️ Open Maps
-          </a>
+            <a
+              class="btn"
+              href="https://www.google.com/maps/search/?api=1&query=-22.986246,-43.2485183"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open location in Google Maps"
+            >
+              🗺️ Open Maps
+            </a>
+          </div>
+
+          <iframe
+            src="https://www.google.com/maps?output=embed&z=17&t=k&ll=-22.986246,-43.2485183"
+            title="Map location in Rio de Janeiro"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
         </div>
 
-        <iframe
-          src="https://www.google.com/maps?output=embed&z=17&t=k&ll=-22.986246,-43.2485183"
-          loading="lazy">
-        </iframe>
-      </div>
+        <div class="bottomBar">
+          <a
+            class="cta"
+            href="https://www.google.com/maps?layer=c&cbll=-22.986246,-43.2485183&cbp=11,0,0,0,0"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            👣 View this spot in Street View
+          </a>
+        </div>
+      </section>
 
-      <div class="ctaWrap">
-        <a class="cta"
-           href="https://www.google.com/maps?layer=c&cbll=-22.986246,-43.2485183&cbp=11,0,0,0,0"
-           target="_blank" rel="noopener noreferrer">
-          👣 View this spot in Street View
-        </a>
+      <aside class="card side">
+        <div class="eyebrow">Street art origin</div>
 
-        <p class="note">
-          Walk up the street and look to your right — you’ll find the artwork.
+        <h1 class="logo">GIOIA MUNDO</h1>
+
+        <p class="text">
+          We discover extraordinary street art across the world.
+          <br><br>
+          Our mission is to connect that art to streetwear and give every piece a deeper story.
+          <br><br>
+          On the map you see where your piece was born — below, the original artwork in its real environment.
         </p>
-      </div>
-    </section>
 
-    <aside class="card side">
-      <div class="logo">GIOIA MUNDO</div>
+        <div class="metaRow">
+          <span class="chip">-22.986246, -43.2485183</span>
+          <span class="chip">Rio de Janeiro</span>
+        </div>
 
-      <p class="text">
-        We discover extraordinary street art across the world.<br><br>
-        Our mission is to connect that art to streetwear.<br><br>
-        On the map you see where your piece was born — below, the original artwork.
-      </p>
+        <div class="divider"></div>
 
-      <span class="coords">
-        -22.986246, -43.2485183
-      </span>
+        <div class="artWrap">
+          <div class="artFrame">
+            <img
+              src="mulher-da-maracuja.png"
+              alt="Street artwork in Rio de Janeiro"
+              loading="lazy"
+            />
+          </div>
 
-      <div class="divider"></div>
+          <div class="artInfo">
+            <div>
+              <h2 class="artTitle">Original artwork</h2>
+              <p class="artCaption">
+                The wall piece at the origin of this design, photographed on location in Rio de Janeiro.
+              </p>
+            </div>
 
-      <div class="insta">
-        <img src="./mulher-da-maracuja.png" alt="Street art in Rio de Janeiro"/>
+            <span class="smallTag">Captured on site</span>
+          </div>
+        </div>
+      </aside>
 
-        <p class="insta-fallback">
-          Original street artwork — Rio de Janeiro.
-        </p>
-      </div>
-    </aside>
-
-  </div>
-</main>
+    </div>
+  </main>
 </body>
 </html>
