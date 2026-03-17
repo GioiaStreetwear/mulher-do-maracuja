@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Gioia Mundo</title>
+  <title>Gioia Streetwear</title>
   <meta name="description" content="Gioia Mundo — street art origins." />
 
   <!-- Montserrat Light -->
