@@ -39,6 +39,13 @@
       min-height:100vh;
     }
 
+    img, iframe{
+      display:block;
+      max-width:100%;
+    }
+
+    a{color:inherit}
+
     .wrap{
       max-width:1280px;
       margin:0 auto;
@@ -65,7 +72,9 @@
       box-shadow:var(--shadow);
     }
 
-    .mapCard{padding:14px;}
+    .mapCard{
+      padding:14px;
+    }
 
     .map{
       position:relative;
@@ -138,26 +147,19 @@
       color:var(--text);
       background:rgba(0,0,0,.36);
       border:1px solid rgba(255,255,255,.16);
+      transition:transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+      border-color:rgba(255,255,255,.30);
+      background:rgba(0,0,0,.48);
     }
 
     .bottomBar{
       margin-top:14px;
       display:flex;
       justify-content:center;
-    }
-
-    .cta{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:14px 18px;
-      border-radius:var(--radius-pill);
-      text-decoration:none;
-      background:linear-gradient(135deg,#ffffff 0%, #ececff 100%);
-      color:#090909;
-      font-weight:800;
-      font-size:14px;
-      box-shadow:var(--glow);
     }
 
     .side{
@@ -218,9 +220,13 @@
       margin:4px 0 2px;
     }
 
-    .artWrap{display:grid;gap:12px;}
+    .artWrap{
+      display:grid;
+      gap:12px;
+    }
 
     .artFrame{
+      position:relative;
       overflow:hidden;
       border-radius:20px;
       background:#0e1018;
@@ -229,11 +235,15 @@
     }
 
     .artFrame img{
-      display:block;
       width:100%;
       height:auto;
       aspect-ratio:4/5;
       object-fit:cover;
+      transition:transform .45s ease;
+    }
+
+    .artFrame:hover img{
+      transform:scale(1.03);
     }
 
     .artInfo{
@@ -268,6 +278,13 @@
       font-size:12px;
       white-space:nowrap;
     }
+
+    .img-fallback{
+      margin-top:8px;
+      font-size:12px;
+      color:var(--muted);
+      opacity:.9;
+    }
   </style>
 </head>
 <body>
@@ -290,23 +307,12 @@
           </div>
 
           <iframe
-            src="https://www.google.com/maps?output=embed&z=17&t=k&ll=-22.986246,-43.2485183"
+            src="https://www.google.com/maps?q=-22.986246,-43.2485183&z=17&output=embed"
             title="Map location in Rio de Janeiro"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             allowfullscreen
           ></iframe>
-        </div>
-
-        <div class="bottomBar">
-          <a
-            class="cta"
-            href="https://www.google.com/maps?layer=c&cbll=-22.986246,-43.2485183&cbp=11,0,0,0,0"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            👣 View this spot in Street View
-          </a>
         </div>
       </section>
 
@@ -332,7 +338,11 @@
 
         <div class="artWrap">
           <div class="artFrame">
-            <img src="mulher-da-maracuja.png" alt="Street artwork in Rio de Janeiro">
+            <img
+              src="mulher-da-maracuja.png"
+              alt="Street artwork in Rio de Janeiro"
+              loading="lazy"
+            />
           </div>
 
           <div class="artInfo">
@@ -340,6 +350,9 @@
               <h2 class="artTitle">Original artwork</h2>
               <p class="artCaption">
                 The wall piece at the origin of this design, photographed on location in Rio de Janeiro.
+              </p>
+              <p class="img-fallback">
+                If the image does not load, check the exact filename in your GitHub repository.
               </p>
             </div>
 
