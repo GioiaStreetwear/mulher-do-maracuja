@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Gioia Mundo</title>
+  <meta name="description" content="Gioia Mundo — street art origins." />
+
+  <!-- Montserrat Light -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --text:#f5f7ff;
+      --muted:#b8bfd8;
+      --line:#232843;
+      --card: rgba(18,20,32,.75);
+      --glass: rgba(0,0,0,.40);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 20% 10%, rgba(124,92,255,.22), transparent 60%),
+        radial-gradient(700px 500px at 90% 20%, rgba(46,229,157,.14), transparent 55%),
+        linear-gradient(180deg,#070810,var(--bg));
+    }
+
+    .wrap{max-width:1200px;margin:0 auto;padding:24px}
+    .layout{
+      display:grid;
+      gap:20px;
+      grid-template-columns: 640px 1fr;
+      align-items:start;
+    }
+    @media(max-width:960px){
+      .layout{grid-template-columns:1fr}
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:26px;
+      overflow:hidden;
+    }
+
+    /* MAP */
+    .mapCard{padding:14px}
+    .map{
+      position:relative;
+      height:520px;
+      border-radius:18px;
+      overflow:hidden;
+    }
+    .map iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    .mapOverlay{
+      position:absolute;
+      left:14px; right:14px; top:14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      pointer-events:none;
+      z-index:2;
+    }
+
+    .badge{
+      pointer-events:auto;
+      padding:10px 14px;
+      border-radius:999px;
+      background:var(--glass);
+      border:1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(10px);
+      font-weight:800;
+      font-size:13px;
+      max-width:75%;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .btn{
+      pointer-events:auto;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.16);
+      backdrop-filter: blur(10px);
+      color:var(--text);
+      font-weight:800;
+      font-size:13px;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .ctaWrap{
+      margin-top:14px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:flex-start;
+      justify-content:space-between;
+    }
+
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:14px 18px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#ffffff,#eaeaff);
+      color:#000;
+      font-weight:800;
+      font-size:14px;
+      text-decoration:none;
+      box-shadow:0 12px 40px rgba(124,92,255,.25);
+    }
+
+    .note{
+      font-size:13px;
+      color:var(--muted);
+      margin:0;
+      max-width:420px;
+      line-height:1.6;
+    }
+
+    /* INFO */
+    .side{padding:22px;display:grid;gap:16px}
+    .logo{
+      font-family:'Montserrat',sans-serif;
+      font-weight:300;
+      letter-spacing:.75em;
+      text-transform:uppercase;
+      font-size:18px;
+    }
+    .text{color:var(--muted);line-height:1.75;margin:0}
+    .coords{
+      width:fit-content;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      font-size:13px;
+      color:var(--muted);
+    }
+    .divider{height:1px;background:var(--line);margin:8px 0}
+
+    .insta{max-width:420px}
+  </style>
+</head>
+
+<body>
+<main class="wrap">
+  <div class="layout">
+
+    <!-- LEFT: MAP -->
+    <section class="card mapCard">
+      <div class="map">
+        <div class="mapOverlay">
+          <div class="badge">📍 4 R. Ten. Maurício de Medeiros, Rio de Janeiro</div>
+          <a class="btn"
+             href="https://www.google.com/maps/search/?api=1&query=-22.921319955468547,-43.188726945225916"
+             target="_blank" rel="noopener">
+            🗺️ Open Maps
+          </a>
+        </div>
+
+        <!-- Satellite map via coordinates -->
+        <iframe
+          src="https://www.google.com/maps?output=embed&z=19&t=k&ll=-22.921319955468547,-43.188726945225916"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+      <div class="ctaWrap">
+        <a class="cta"
+           href="https://www.google.com/maps?layer=c&cbll=-22.921319955468547,-43.188726945225916&cbp=11,0,0,0,0"
+           target="_blank" rel="noopener">
+          👣 Klik hier om de plek van de graffiti in Street View te zien
+        </a>
+
+        <p class="note">
+          Turn around and walk up in the street. You will find the tag on your right. Enjoy.
+        </p>
+      </div>
+    </section>
+
+    <!-- RIGHT: INFO + INSTAGRAM -->
+    <aside class="card side">
+      <div class="logo">GIOIA MUNDO</div>
+
+      <p class="text">
+        You find the most amazing art on the streets all over the world.<br><br>
+        We simply love it and want to expose the art more by connecting it with streetwear.<br><br>
+        On the map you see the exact spot where the street art of your T is born,
+        and below you find the artist who created it.
+      </p>
+
+      <span class="coords">
+        -22.921319955468547, -43.188726945225916
+      </span>
+
+      <div class="divider"></div>
+
+      <!-- NEW INSTAGRAM POST -->
+      <div class="insta">
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/p/C2jRkcCOj15/"
+          data-instgrm-version="14"
+          style="background:#fff;border-radius:14px;border:0;margin:0;max-width:100%;">
+        </blockquote>
+        <script async src="https://www.instagram.com/embed.js"></script>
+
+        <p style="margin-top:10px;font-size:13px;color:#b8bfd8;">
+          Not loading? Open directly on
+          <a href="https://www.instagram.com/p/C2jRkcCOj15/"
+             target="_blank" rel="noopener" style="color:#0095f6;">
+            Instagram
+          </a>.
+        </p>
+      </div>
+    </aside>
+
+  </div>
+</main>
+</body>
+</html>
