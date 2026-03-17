@@ -7,7 +7,6 @@
   <meta name="description" content="Discover the birthplace of your Gioia Mundo street art piece."/>
   <meta name="color-scheme" content="dark"/>
 
-  <!-- Montserrat -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
@@ -27,7 +26,7 @@
 
     body{
       margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
       color:var(--text);
       background:
         radial-gradient(900px 500px at 20% 10%, rgba(124,92,255,.22), transparent 60%),
@@ -44,7 +43,7 @@
       align-items:start;
     }
 
-    @media(max-width:960px){
+    @media (max-width:960px){
       .layout{grid-template-columns:1fr}
     }
 
@@ -56,7 +55,6 @@
       backdrop-filter:blur(8px);
     }
 
-    /* MAP */
     .mapCard{padding:14px}
 
     .map{
@@ -76,7 +74,9 @@
 
     .mapOverlay{
       position:absolute;
-      left:14px; right:14px; top:14px;
+      left:14px;
+      right:14px;
+      top:14px;
       display:flex;
       justify-content:space-between;
       align-items:center;
@@ -152,8 +152,11 @@
       line-height:1.6;
     }
 
-    /* SIDE */
-    .side{padding:22px;display:grid;gap:16px}
+    .side{
+      padding:22px;
+      display:grid;
+      gap:16px;
+    }
 
     .logo{
       font-family:'Montserrat',sans-serif;
@@ -163,7 +166,11 @@
       font-size:18px;
     }
 
-    .text{color:var(--muted);line-height:1.75;margin:0}
+    .text{
+      color:var(--muted);
+      line-height:1.75;
+      margin:0;
+    }
 
     .coords{
       width:fit-content;
@@ -174,15 +181,20 @@
       color:var(--muted);
     }
 
-    .divider{height:1px;background:var(--line)}
+    .divider{
+      height:1px;
+      background:var(--line);
+    }
 
-    .insta{max-width:420px}
+    .insta{
+      max-width:420px;
+    }
 
-    /* 🔥 PREMIUM IMAGE UPGRADE */
     .insta img{
-      border-radius:14px;
+      display:block;
       width:100%;
       height:auto;
+      border-radius:14px;
       box-shadow:0 20px 60px rgba(0,0,0,.35);
       transition:transform .3s ease;
     }
@@ -196,7 +208,6 @@
       font-size:13px;
       color:var(--muted);
     }
-
   </style>
 </head>
 
@@ -204,16 +215,14 @@
 <main class="wrap">
   <div class="layout">
 
-    <!-- MAP -->
     <section class="card mapCard">
       <div class="map">
-
         <div class="mapOverlay">
           <div class="badge">📍 Rio de Janeiro, Brazil</div>
 
           <a class="btn"
              href="https://www.google.com/maps/search/?api=1&query=-22.986246,-43.2485183"
-             target="_blank" rel="noopener">
+             target="_blank" rel="noopener noreferrer">
             🗺️ Open Maps
           </a>
         </div>
@@ -222,13 +231,12 @@
           src="https://www.google.com/maps?output=embed&z=17&t=k&ll=-22.986246,-43.2485183"
           loading="lazy">
         </iframe>
-
       </div>
 
       <div class="ctaWrap">
         <a class="cta"
            href="https://www.google.com/maps?layer=c&cbll=-22.986246,-43.2485183&cbp=11,0,0,0,0"
-           target="_blank" rel="noopener">
+           target="_blank" rel="noopener noreferrer">
           👣 View this spot in Street View
         </a>
 
@@ -238,9 +246,7 @@
       </div>
     </section>
 
-    <!-- INFO -->
     <aside class="card side">
-
       <div class="logo">GIOIA MUNDO</div>
 
       <p class="text">
@@ -255,15 +261,13 @@
 
       <div class="divider"></div>
 
-      <!-- FOTO -->
       <div class="insta">
-        <img src="Mulher da maracuja.png" alt="Street art in Rio de Janeiro"/>
+        <img src="./mulher-da-maracuja.png" alt="Street art in Rio de Janeiro"/>
 
         <p class="insta-fallback">
           Original street artwork — Rio de Janeiro.
         </p>
       </div>
-
     </aside>
 
   </div>
