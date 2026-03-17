@@ -3,10 +3,11 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Gioia Streetwear</title>
-  <meta name="description" content="Gioia Mundo — street art origins." />
+  <title>Gioia Mundo — Street Art Origins</title>
+  <meta name="description" content="Discover the birthplace of your Gioia Mundo street art piece."/>
+  <meta name="color-scheme" content="dark"/>
 
-  <!-- Montserrat Light -->
+  <!-- Montserrat -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
@@ -19,8 +20,11 @@
       --line:#232843;
       --card: rgba(18,20,32,.75);
       --glass: rgba(0,0,0,.40);
+      --accent:#0095f6;
     }
+
     *{box-sizing:border-box}
+
     body{
       margin:0;
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
@@ -32,12 +36,14 @@
     }
 
     .wrap{max-width:1200px;margin:0 auto;padding:24px}
+
     .layout{
       display:grid;
       gap:20px;
-      grid-template-columns: 640px 1fr;
+      grid-template-columns:640px 1fr;
       align-items:start;
     }
+
     @media(max-width:960px){
       .layout{grid-template-columns:1fr}
     }
@@ -47,16 +53,19 @@
       border:1px solid var(--line);
       border-radius:26px;
       overflow:hidden;
+      backdrop-filter:blur(8px);
     }
 
     /* MAP */
     .mapCard{padding:14px}
+
     .map{
       position:relative;
       height:520px;
       border-radius:18px;
       overflow:hidden;
     }
+
     .map iframe{
       position:absolute;
       inset:0;
@@ -82,7 +91,7 @@
       border-radius:999px;
       background:var(--glass);
       border:1px solid rgba(255,255,255,.14);
-      backdrop-filter: blur(10px);
+      backdrop-filter:blur(10px);
       font-weight:800;
       font-size:13px;
       max-width:75%;
@@ -97,7 +106,7 @@
       border-radius:999px;
       background:rgba(0,0,0,.35);
       border:1px solid rgba(255,255,255,.16);
-      backdrop-filter: blur(10px);
+      backdrop-filter:blur(10px);
       color:var(--text);
       font-weight:800;
       font-size:13px;
@@ -105,14 +114,16 @@
       display:inline-flex;
       align-items:center;
       gap:8px;
+      transition:transform .2s ease;
     }
+
+    .btn:hover{transform:translateY(-1px)}
 
     .ctaWrap{
       margin-top:14px;
       display:flex;
       gap:12px;
       flex-wrap:wrap;
-      align-items:flex-start;
       justify-content:space-between;
     }
 
@@ -128,7 +139,10 @@
       font-size:14px;
       text-decoration:none;
       box-shadow:0 12px 40px rgba(124,92,255,.25);
+      transition:transform .2s ease;
     }
+
+    .cta:hover{transform:translateY(-1px)}
 
     .note{
       font-size:13px;
@@ -138,8 +152,9 @@
       line-height:1.6;
     }
 
-    /* INFO */
+    /* SIDE */
     .side{padding:22px;display:grid;gap:16px}
+
     .logo{
       font-family:'Montserrat',sans-serif;
       font-weight:300;
@@ -147,7 +162,9 @@
       text-transform:uppercase;
       font-size:18px;
     }
+
     .text{color:var(--muted);line-height:1.75;margin:0}
+
     .coords{
       width:fit-content;
       padding:8px 12px;
@@ -156,9 +173,30 @@
       font-size:13px;
       color:var(--muted);
     }
-    .divider{height:1px;background:var(--line);margin:8px 0}
+
+    .divider{height:1px;background:var(--line)}
 
     .insta{max-width:420px}
+
+    /* 🔥 PREMIUM IMAGE UPGRADE */
+    .insta img{
+      border-radius:14px;
+      width:100%;
+      height:auto;
+      box-shadow:0 20px 60px rgba(0,0,0,.35);
+      transition:transform .3s ease;
+    }
+
+    .insta img:hover{
+      transform:scale(1.02);
+    }
+
+    .insta-fallback{
+      margin-top:10px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
   </style>
 </head>
 
@@ -166,73 +204,66 @@
 <main class="wrap">
   <div class="layout">
 
-    <!-- LEFT: MAP -->
+    <!-- MAP -->
     <section class="card mapCard">
       <div class="map">
+
         <div class="mapOverlay">
-          <div class="badge">📍 4 R. Ten. Maurício de Medeiros, Rio de Janeiro</div>
+          <div class="badge">📍 Rio de Janeiro, Brazil</div>
+
           <a class="btn"
-             href="https://www.google.com/maps/search/?api=1&query=-22.921319955468547,-43.188726945225916"
+             href="https://www.google.com/maps/search/?api=1&query=-22.986246,-43.2485183"
              target="_blank" rel="noopener">
             🗺️ Open Maps
           </a>
         </div>
 
-        <!-- Satellite map via coordinates -->
         <iframe
-          src="https://www.google.com/maps?output=embed&z=19&t=k&ll=-22.921319955468547,-43.188726945225916"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
+          src="https://www.google.com/maps?output=embed&z=17&t=k&ll=-22.986246,-43.2485183"
+          loading="lazy">
         </iframe>
+
       </div>
 
       <div class="ctaWrap">
         <a class="cta"
-           href="https://www.google.com/maps?layer=c&cbll=-22.921319955468547,-43.188726945225916&cbp=11,0,0,0,0"
+           href="https://www.google.com/maps?layer=c&cbll=-22.986246,-43.2485183&cbp=11,0,0,0,0"
            target="_blank" rel="noopener">
-          👣 Klik hier om de plek van de graffiti in Street View te zien
+          👣 View this spot in Street View
         </a>
 
         <p class="note">
-          Turn around and walk up in the street. You will find the tag on your right. Enjoy.
+          Walk up the street and look to your right — you’ll find the artwork.
         </p>
       </div>
     </section>
 
-    <!-- RIGHT: INFO + INSTAGRAM -->
+    <!-- INFO -->
     <aside class="card side">
+
       <div class="logo">GIOIA MUNDO</div>
 
       <p class="text">
-        You find the most amazing art on the streets all over the world.<br><br>
-        We simply love it and want to expose the art more by connecting it with streetwear.<br><br>
-        On the map you see the exact spot where the street art of your T is born,
-        and below you find the artist who created it.
+        We discover extraordinary street art across the world.<br><br>
+        Our mission is to connect that art to streetwear.<br><br>
+        On the map you see where your piece was born — below, the original artwork.
       </p>
 
       <span class="coords">
-        -22.921319955468547, -43.188726945225916
+        -22.986246, -43.2485183
       </span>
 
       <div class="divider"></div>
 
-      <!-- NEW INSTAGRAM POST -->
+      <!-- FOTO -->
       <div class="insta">
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/p/C2jRkcCOj15/"
-          data-instgrm-version="14"
-          style="background:#fff;border-radius:14px;border:0;margin:0;max-width:100%;">
-        </blockquote>
-        <script async src="https://www.instagram.com/embed.js"></script>
+        <img src="Mulher da maracuja.png" alt="Street art in Rio de Janeiro"/>
 
-        <p style="margin-top:10px;font-size:13px;color:#b8bfd8;">
-          Not loading? Open directly on
-          <a href="https://www.instagram.com/p/C2jRkcCOj15/"
-             target="_blank" rel="noopener" style="color:#0095f6;">
-            Instagram
-          </a>.
+        <p class="insta-fallback">
+          Original street artwork — Rio de Janeiro.
         </p>
       </div>
+
     </aside>
 
   </div>
