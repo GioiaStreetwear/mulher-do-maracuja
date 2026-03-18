@@ -23,6 +23,7 @@
       --glow:0 12px 40px rgba(124,92,255,.22);
       --radius-xl:28px;
       --radius-lg:22px;
+      --radius-md:16px;
       --radius-pill:999px;
     }
 
@@ -54,7 +55,7 @@
 
     .layout{
       display:grid;
-      grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);
+      grid-template-columns:minmax(0,1.02fr) minmax(360px,.98fr);
       gap:22px;
       align-items:start;
     }
@@ -74,8 +75,11 @@
       box-shadow:var(--shadow);
     }
 
+    /* LEFT COLUMN */
     .mapCard{
       padding:14px;
+      display:grid;
+      gap:14px;
     }
 
     .map{
@@ -166,9 +170,9 @@
     }
 
     .mapFooter{
-      margin-top:14px;
       display:flex;
       justify-content:center;
+      padding:4px 6px 2px;
     }
 
     .mapNote{
@@ -180,6 +184,87 @@
       max-width:520px;
     }
 
+    .productBlock{
+      display:grid;
+      gap:12px;
+    }
+
+    .sectionLabel{
+      margin:0;
+      font-size:12px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .productFrame{
+      position:relative;
+      overflow:hidden;
+      border-radius:20px;
+      background:#f4f4f4;
+      border:1px solid rgba(255,255,255,.06);
+      box-shadow:0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .productFrame::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), transparent 22%, transparent 75%, rgba(255,255,255,.03));
+      pointer-events:none;
+      z-index:1;
+    }
+
+    .productFrame img{
+      width:100%;
+      height:auto;
+      object-fit:contain;
+      padding:10px;
+      background:#f4f4f4;
+      transition:transform .45s ease;
+      position:relative;
+      z-index:0;
+    }
+
+    .productFrame:hover img{
+      transform:scale(1.03);
+    }
+
+    .productInfo{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      align-items:flex-start;
+      flex-wrap:wrap;
+    }
+
+    .productTitle{
+      margin:0;
+      font-size:16px;
+      font-weight:700;
+      letter-spacing:.02em;
+    }
+
+    .productCaption{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.7;
+      max-width:500px;
+    }
+
+    .smallTag{
+      width:fit-content;
+      padding:8px 12px;
+      border-radius:var(--radius-pill);
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      color:var(--text);
+      font-size:12px;
+      white-space:nowrap;
+    }
+
+    /* RIGHT COLUMN */
     .side{
       padding:26px;
       display:grid;
@@ -247,28 +332,13 @@
       margin:4px 0 2px;
     }
 
-    .sectionLabel{
-      margin:0;
-      font-size:12px;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      color:var(--muted);
-    }
-
     .artWrap,
-    .productWrap,
     .storyWrap{
       display:grid;
       gap:12px;
     }
 
-    .productWrap,
-    .storyWrap{
-      margin-top:10px;
-    }
-
     .artFrame,
-    .productFrame,
     .storyCard{
       position:relative;
       overflow:hidden;
@@ -278,8 +348,7 @@
       box-shadow:0 20px 60px rgba(0,0,0,.35);
     }
 
-    .artFrame::before,
-    .productFrame::before{
+    .artFrame::before{
       content:"";
       position:absolute;
       inset:0;
@@ -288,37 +357,21 @@
       z-index:1;
     }
 
-    .artFrame img,
-    .productFrame img{
+    .artFrame img{
       width:100%;
       height:auto;
+      aspect-ratio:4/5;
+      object-fit:cover;
       transition:transform .45s ease;
       position:relative;
       z-index:0;
     }
 
-    .artFrame img{
-      aspect-ratio:4/5;
-      object-fit:cover;
-    }
-
-    .productFrame{
-      background:#f4f4f4;
-    }
-
-    .productFrame img{
-      object-fit:contain;
-      padding:8px;
-      background:#f4f4f4;
-    }
-
-    .artFrame:hover img,
-    .productFrame:hover img{
+    .artFrame:hover img{
       transform:scale(1.03);
     }
 
-    .artInfo,
-    .productInfo{
+    .artInfo{
       display:flex;
       justify-content:space-between;
       gap:16px;
@@ -327,7 +380,6 @@
     }
 
     .artTitle,
-    .productTitle,
     .storyTitle{
       margin:0;
       font-size:16px;
@@ -335,24 +387,12 @@
       letter-spacing:.02em;
     }
 
-    .artCaption,
-    .productCaption{
+    .artCaption{
       margin:4px 0 0;
       color:var(--muted);
       font-size:13px;
       line-height:1.7;
       max-width:500px;
-    }
-
-    .smallTag{
-      width:fit-content;
-      padding:8px 12px;
-      border-radius:var(--radius-pill);
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      color:var(--text);
-      font-size:12px;
-      white-space:nowrap;
     }
 
     .storyCard{
@@ -464,6 +504,32 @@
             A tribute to the origin — the exact place where this story begins.
           </p>
         </div>
+
+        <div class="divider"></div>
+
+        <div class="productBlock">
+          <p class="sectionLabel">The translation</p>
+
+          <div class="productFrame">
+            <img
+              src="t-mulher-da-maracuja.png"
+              alt="Gioia Mundo T-shirt based on the original Rio artwork"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="productInfo">
+            <div>
+              <h2 class="productTitle">Where street art becomes streetwear</h2>
+              <p class="productCaption">
+                A tribute to the origin, transformed into a wearable piece.
+                This design carries the atmosphere, color, and identity of the place where it was found.
+              </p>
+            </div>
+
+            <span class="smallTag">Limited piece</span>
+          </div>
+        </div>
       </section>
 
       <aside class="card side">
@@ -471,7 +537,7 @@
 
         <h1 class="logo">GIOIA MUNDO</h1>
 
-        <p class="heroLine">Where street art becomes streetwear.</p>
+        <p class="heroLine">The story behind.</p>
 
         <p class="subLine">
           We discover extraordinary street art across the world and translate it into pieces you can wear.
@@ -505,32 +571,6 @@
             </div>
 
             <span class="smallTag">Captured on site</span>
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <p class="sectionLabel">The translation</p>
-
-        <div class="productWrap">
-          <div class="productFrame">
-            <img
-              src="t-mulher-da-maracuja.png"
-              alt="Gioia Mundo T-shirt based on the original Rio artwork"
-              loading="lazy"
-            />
-          </div>
-
-          <div class="productInfo">
-            <div>
-              <h2 class="productTitle">From wall to wearable</h2>
-              <p class="productCaption">
-                A tribute to the origin, transformed into a wearable piece.
-                This design carries the atmosphere, color, and identity of the place where it was found.
-              </p>
-            </div>
-
-            <span class="smallTag">Limited piece</span>
           </div>
         </div>
 
